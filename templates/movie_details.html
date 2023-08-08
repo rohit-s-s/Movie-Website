@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ movie_data['title'] }}</title>
+   {% include 'style.html' %}
+</head>
+<body>
+  {% include 'navbar.html' %}
+    <h1 style="margin-top: 4rem!important;">{{ movie_data['title'] }}</h1>
+    <div class="movie-info">
+        <img src="https://image.tmdb.org/t/p/w500{{ movie_data['poster_path'] }}" alt="{{ movie_data['title'] }} Poster">
+        <div class="details">
+            <p><strong>Release Date:</strong> {{ movie_data['release_date'] }}</p>
+            <p><strong>Runtime:</strong> {{ movie_data['runtime'] }} minutes</p>
+            <p><strong>Genres:</strong>
+                {% for genre in movie_data['genres'] %}
+                    {{ genre['name'] }}
+                    {% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p><strong>Overview:</strong> {{ movie_data['overview'] }}</p>
+            <p><strong>Tagline:</strong> {{ movie_data['tagline'] }}</p>
+            <p><strong>Vote Average:</strong> {{ movie_data['vote_average'] }}</p>
+        </div>
+    </div>
+    <div class="production-companies">
+        <h2>Production Companies:</h2>
+        <ul>
+            {% for company in movie_data['production_companies'] %}
+                <li>
+                    {{ company['name'] }} ({{ company['origin_country'] }})
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <p><strong>IMDb Link:</strong> <a href="http://www.imdb.com/title/{{ movie_data['imdb_id'] }}">http://www.imdb.com/title/{{ movie_data['imdb_id'] }}</a></p>
+  {% include 'footer.html'%}
+</body>
+</html>
+
