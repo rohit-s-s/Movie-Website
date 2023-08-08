@@ -1,26 +1,24 @@
-<DOCTYPE html>
-<html>
-  <head>
-      <title>ABC Career Wedsite</title>
-   {% include "style.html" %}
-  </head>
-  <body>
-   <div class="container">
-     {% include 'navbar.html'%}
-      <h1 class="mt-2 mb-2">Career Website</h1>
-  {% include "banner.html" %}
-    <h2 onclick="goToAboutPage()" class="text-center mt-4 mb-4">About Us</h2>
-    <h2  class="text-center mb-4 mt-4">Open Positions</h2>
-     {% include 'jobs.html' %}
-    <div class="text-center mt-4 mb-2">
-       <a href="mailto:email@example.com?cc=secondemail@example.com, anotheremail@example.com, &bcc=lastemail@example.com&subject=Mail from our Website&body=Sent in your Query" class="btn btn-primary">Contact Us</a>
-    </div>
-   {% include "footer.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Movie-Website</title>
+</head>
+<body>
+
+  {% include 'navbar.html' %}
+   <div class="px-6 py-6">
+  {% include 'banner.html' %}
+ </div>
+   <div class="flex space-x-12 px-6 py-6">
+  {% for movie in movie %}
+  {% include 'poster.html' %}
+  {% endfor %}
    </div>
-      <script>
-    function goToAboutPage() {
-      window.location.href = '/about';
-    }
-  </script>
-  </body>
+  
+  {% include 'footer.html' %}
+  
+</body>
 </html>
