@@ -1,14 +1,14 @@
 from flask import Flask, render_template,jsonify
 from database import load_movie_from_db,load_movies_from_db
 # add_application_to_db
-app = Flask(__name__)
+main = Flask(__name__)
 
 
-@app.route("/")
+@main.route("/")
 def hello_jovian():
   movie = load_movie_from_db()
   return render_template('index.html',movie=movie)
-@app.route("/movie/<id>")
+@main.route("/movie/<id>")
 def show_movie(id):
     movie = load_movies_from_db(id)
     if movie is None:
@@ -24,10 +24,10 @@ def show_movie(id):
 #   return render_template('application_submitted.html', 
 #                          application=data,
 #                          jobs=job)
-@app.route("/about")
+@main.route("/about")
 def about():
   return render_template("about.html")
   
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', debug=True)
+  main.run(host='0.0.0.0', debug=True)
