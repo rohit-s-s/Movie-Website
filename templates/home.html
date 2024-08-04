@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block head %}
+<title>home</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}" />
+{% endblock head %} {% block content %}
+
+<main class="container" style="background-image: url('/static/bg.jpg'); background-size: 100%;">
+    <h1>Welcome.</h1>
+    <h3>Millions of movies, TV shows and people to discover. Explore now.</h3>
+    <form method="post">
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Search for a movie"
+		autocomplete="off"
+      />
+      <button type="submit">Submit</button>
+    </form>
+	{% if message %}
+		<h2>{{message}}</h2>
+	{% endif %}
+</main>
+
+{% endblock content %}

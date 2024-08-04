@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Document</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='view.css') }}">
+{% endblock head %}
+
+{% block content %}
+<div class="container">
+    <div style="width: 25% ;">
+        <img src="https://image.tmdb.org/t/p/w300{{ message.poster_path }}" alt="{{ message.title }} Poster">
+        
+    </div>
+    <div style="width: 75%;">
+        <h1>{{message.title}}</h1>
+        <p>{{message.overview}}</p>
+        <h3>Release date : {{message.release_date}}</h3>
+        {% if message.adult %}
+            <h3>Adult</h3>
+        {% endif %}
+        <h3>Review : {{message.vote_average}}</h3>
+        <h3>language : {{message.original_language}}</h3>
+    </div>
+</div>
+{% endblock content %}
+
